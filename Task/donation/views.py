@@ -56,7 +56,6 @@ class UserLoginView(APIView):
             return Response({"error": msg}, status=status.HTTP_406_NOT_ACCEPTABLE)
 
         try:
-            import pdb;pdb.set_trace()
             user, created = Users.objects.get_or_create(phone_number=mobile_number, defaults={"password": otp_value})
             if created:
                 user.set_password(otp_value)
